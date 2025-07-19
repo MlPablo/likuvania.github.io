@@ -1,0 +1,111 @@
+/* --- General Styles & Font Import --- */
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+h1, h3 {
+    margin-top: 0;
+}
+
+/* --- Hero Section --- */
+.hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1516549655169-98c4b2717c29?auto=format&fit=crop&q=80&w=2070');
+    height: 70vh; /* Viewport height - adjust as needed */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+
+    /* Flexbox for centering content */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.hero h1 {
+    font-size: 3.5rem; /* Large text size */
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.hero .subtitle {
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+}
+
+.hero .btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border: 2px solid white;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.hero .btn:hover {
+    background-color: white;
+    color: #333;
+}
+
+/* --- Features Section --- */
+.features {
+    padding: 60px 20px;
+    background-color: #f8f9fa; /* Light grey background */
+}
+
+.features-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+    gap: 40px; /* Space between columns */
+    text-align: center;
+}
+
+.feature-item .icon {
+    font-size: 3rem; /* Emoji icon size */
+    margin-bottom: 1rem;
+    color: #007bff; /* A nice blue color */
+}
+
+.feature-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #343a40;
+}
+
+.feature-item p {
+    color: #6c757d;
+    font-size: 1rem;
+}
+
+/* --- Responsive Design for Mobile --- */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero .subtitle {
+        font-size: 1.5rem;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr; /* Stack columns on top of each other */
+        gap: 50px;
+    }
+}
