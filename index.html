@@ -8,9 +8,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/logo_small.png">
 </head>
 <body>
-
+<header data-include="/partials/header.html"></header>
 <section class="hero">
     <div class="hero-content">
         <h1>Лікування алкоголізму та виведення з запою</h1>
@@ -28,7 +29,7 @@
     <div class="features-grid">
         <div class="feature-item">
             <div class="icon">💧</div>
-            <h3>Крапельниця на дому</h3>
+            <h3>Виведення з запою на дому</h3>
             <p>Ефективний метод детоксикації організму для швидкого полегшення симптомів та відновлення сил.</p>
         </div>
         <div class="feature-item">
@@ -98,71 +99,6 @@
     </div>
 </section>
 
-<footer class="site-footer">
-    <div class="footer-container">
-        <div class="footer-about">
-            <!-- Логотип -->
-            <img src="images/logo.png" alt="Galchenko Clinic" style="max-width:220px; height:auto; margin-bottom:15px;">
-
-            <!-- Назва медичного центру -->
-            <p style="font-size:0.95rem; color:#bdc3c7; margin-top:10px;">
-                МЕДИЧНИЙ ЦЕНТР ТОВ «Клініка ім. Гальченко В.В.»
-            </p>
-        </div>
-
-        <div class="footer-links">
-            <h4>Послуги</h4>
-            <ul>
-                <li><a href="#">Лікування алкоголізму</a></li>
-                <li><a href="#">Лікування наркоманії</a></li>
-                <li><a href="#">Психіатрична клініка</a></li>
-                <li><a href="#">Вивід із запою</a></li>
-                <li><a href="#">Кодування від алкоголізму</a></li>
-                <li><a href="#">Детоксикація від наркотиків</a></li>
-                <li><a href="#">Консультація нарколога</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-links">
-            <h4>Корисна інформація</h4>
-            <ul>
-                <li><a href="privacy.html">Політика конфіденційності</a></li>
-                <li><a href="#">Акредитаційний сертифікат</a></li>
-                <li><a href="#">Договір</a></li>
-                <li><a href="licenses.html">Ліцензія</a></li>
-                <li><a href="#">Наші спеціалісти</a></li>
-                <li><a href="#">Вартість послуг</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-contacts">
-            <h4>Контакти</h4>
-            <div class="contact-item">
-                <span>🏢</span>
-                <p>Адреса:<br>вул. Святослава Хороброго 2, м. Київ, Україна</p>
-            </div>
-            <div class="contact-item">
-                <span>📞</span>
-                <p>Телефонуйте 24/7:<br>
-                    <a href="tel:+380736862845">+38 (073) 686 28 45</a><br>
-                </p>
-            </div>
-            <div class="contact-item">
-                <span>✉️</span>
-                <p>E-mail:<br><a href="mailto:elitebeauty313@gmail.com">elitebeauty313@gmail.com</a></p>
-            </div>
-            <div class="social-icons">
-                <a href="#" aria-label="Facebook">F</a>
-                <a href="#" aria-label="Instagram">I</a>
-                <a href="#" aria-label="YouTube">Y</a>
-            </div>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>&copy; 2015-2025 Медлюкс Центр. Всі права захищені.</p>
-    </div>
-</footer>
-
 <script>
     // Додаємо клас .reveal та спостерігаємо за елементами
     (function () {
@@ -183,5 +119,7 @@
         targets.forEach(el => io.observe(el));
     })();
 </script>
+<footer data-include="/partials/footer.html"></footer>
+<script src="/js/include-partials.js"></script>
 </body>
 </html>

@@ -6,11 +6,9 @@
     <title>Політика конфіденційності — Galchenko Clinic</title>
     <link rel="stylesheet" href="style.css" />
     <style>
-        /* Hero */
         .page-hero {
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: #fff;
-            padding: 48px 20px;
+            color: #fff; padding: 48px 20px;
         }
         .page-hero .wrap {max-width: 1120px; margin: 0 auto;}
         .breadcrumbs {opacity:.9; font-size:.95rem; margin-bottom:8px}
@@ -19,7 +17,6 @@
         .page-hero h1 {font-size:2.2rem; margin:6px 0 8px; font-weight:800}
         .meta {opacity:.9; font-size:.95rem}
 
-        /* Layout */
         .doc-wrap {
             max-width: 1120px; margin: 28px auto 56px; padding: 0 20px;
             display: grid; grid-template-columns: 1fr 290px; gap: 28px;
@@ -28,15 +25,11 @@
             background:#fff; border:1px solid #e9eef5; border-radius: 16px;
             box-shadow: 0 10px 30px rgba(20,30,60,.06); padding: 28px;
         }
-        .doc section {margin: 24px 0}
-        .doc h2 {font-size:1.4rem; margin: 4px 0 10px; color:#1b2a49}
-        .doc h3 {font-size:1.1rem; margin: 14px 0 8px; color:#263a57}
-        .doc p  {margin: 10px 0; color:#3b4655}
-        .doc ul {margin: 8px 0 12px 18px}
+        .doc h2 {font-size:1.3rem; margin: 22px 0 10px; color:#1b2a49}
+        .doc p, .doc li {color:#3b4655; font-size:1rem; line-height:1.6}
+        .doc ul {margin: 8px 0 12px 22px}
         .doc li {margin: 6px 0}
-        .doc a {color:#2f80ed}
 
-        /* Sticky TOC */
         .toc {
             position: sticky; top: 24px;
             background:#fff; border:1px solid #e9eef5; border-radius: 14px;
@@ -45,13 +38,12 @@
         }
         .toc h3 {margin:0 0 10px; font-size:1rem; color:#1b2a49}
         .toc nav a {
-            display:block; padding:8px 10px; border-radius:8px; color:#445066; text-decoration:none;
-            font-size:.96rem; transition: background .15s ease, color .15s ease;
+            display:block; padding:6px 10px; border-radius:8px; color:#445066; text-decoration:none;
+            font-size:.95rem; transition: background .15s ease, color .15s ease;
         }
         .toc nav a:hover {background:#f2f6ff; color:#1b2a49}
         .toc nav a.active {background:#e8f0ff; color:#1b2a49; font-weight:700}
 
-        /* Bottom */
         .back-btn {
             display:inline-flex; align-items:center; gap:8px;
             margin-top: 18px; padding: 12px 18px; background:#2f80ed; color:#fff;
@@ -61,7 +53,6 @@
         }
         .back-btn:hover {transform: translateY(-1px); background:#296fd1}
 
-        /* Responsive */
         @media (max-width: 980px){
             .doc-wrap {grid-template-columns: 1fr}
             .toc {order: -1; margin-bottom: 6px}
@@ -69,8 +60,7 @@
     </style>
 </head>
 <body>
-
-<!-- HERO -->
+<header data-include="/partials/header.html"></header>
 <header class="page-hero">
     <div class="wrap">
         <div class="breadcrumbs">
@@ -81,69 +71,85 @@
     </div>
 </header>
 
-<!-- CONTENT + TOC -->
 <main class="doc-wrap">
     <article class="doc-card doc" id="doc">
-        <section id="about">
-            <h2>1. Загальні положення</h2>
-            <p>Тут встав текст з твоєї сторінки політики. Короткий вступ про те, що користуючись сайтом, користувач погоджується з політикою, та що політика може оновлюватись.</p>
+
+        <section id="intro">
+            <h2>Будь ласка, прочитайте уважно!</h2>
+            <p>Користуючись послугами сайту vacilenko.com, надалі “Сайт”, користувач висловлює свою згоду з Політикою Конфіденційності. Сайт залишає за собою право вносити зміни ...</p>
         </section>
 
         <section id="terms">
-            <h2>2. Терміни та визначення</h2>
-            <p>Опиши, що вважається персональними даними, обробкою, володільцем, розпорядником тощо.</p>
+            <h2>1. ВИЗНАЧЕННЯ ТЕРМІНІВ</h2>
+            <p>1.1 У цій Політиці конфіденційності використовуються такі терміни:</p>
+            <p>1.1.1. «Адміністрація сайту» — уповноважені співробітники...</p>
+            <p>1.1.2. «Персональні дані» — будь-яка інформація...</p>
+            <p>1.1.3. «Обробка персональних даних» — будь-яка дія...</p>
+            <p>1.1.4. «Конфіденційність персональних даних» — обов’язкове...</p>
+            <p>1.1.5. «Користувач сайту vacilenko.com» — особа...</p>
+            <p>1.1.6. «Cookies» — невеликий фрагмент даних...</p>
+            <p>1.1.7. «IP-адрес» — унікальний мережеву адресу вузла...</p>
         </section>
 
-        <section id="what-collect">
-            <h2>3. Які дані ми збираємо</h2>
-            <ul>
-                <li>Контактні дані (ім’я, телефон, e-mail), які ви добровільно надаєте.</li>
-                <li>Технічні дані: IP, user-agent, cookie, аналітика (у знеособленому вигляді).</li>
-                <li>Зміст звернень у формах/чатах для відповіді на ваш запит.</li>
-            </ul>
+        <section id="general">
+            <h2>2. ЗАГАЛЬНІ ПОЛОЖЕННЯ</h2>
+            <p>2.1 Використання Користувачем Сайту означає згоду ...</p>
+            <p>2.2 У разі незгоди ...</p>
+            <p>2.3 Справжня Політика ...</p>
+            <p>2.4 Адміністрація Сайту ...</p>
+        </section>
+
+        <section id="subject">
+            <h2>3. ПРЕДМЕТ ПОЛІТИКИ КОНФІДЕНЦІЙНОСТІ</h2>
+            <p>3.1 Справжня Політика ...</p>
+            <p>3.2 Персональні дані ...</p>
+            <p>3.3 Сайт захищає дані ...</p>
         </section>
 
         <section id="purpose">
-            <h2>4. Мета обробки</h2>
-            <ul>
-                <li>Комунікація щодо послуг, обробка заявок.</li>
-                <li>Підтримка роботи сайту, аналіз відвідуваності.</li>
-                <li>Виконання вимог законодавства.</li>
-            </ul>
+            <h2>4. ЦІЛІ ЗБОРУ ПЕРСОНАЛЬНОЇ ІНФОРМАЦІЇ</h2>
+            <p>4.1 Персональні дані Користувача Адміністрація сайту може використовувати в цілях:</p>
+            <p>4.1.1 Ідентифікації Користувача ...</p>
+            <p>4.1.2 Налагодження зворотного зв’язку ...</p>
+            <p>... і так далі до 4.1.11</p>
         </section>
 
-        <section id="cookies">
-            <h2>5. Cookies та аналітика</h2>
-            <p>Опиши, які cookie використовуються, як ними керувати, чи застосовується стороння аналітика.</p>
+        <section id="methods">
+            <h2>5. СПОСОБИ І ТЕРМІНИ ОБРОБКИ</h2>
+            <p>5.1 Обробка персональних даних ...</p>
+            <p>5.2 Персональні дані можуть ...</p>
+            <p>... до 5.5</p>
         </section>
 
-        <section id="storage">
-            <h2>6. Зберігання та захист даних</h2>
-            <p>Термін зберігання, заходи безпеки (шифрування, контроль доступу, резервування).</p>
+        <section id="obligations">
+            <h2>6. ЗОБОВ’ЯЗАННЯ СТОРІН</h2>
+            <p>6.1 Користувач зобов’язаний ...</p>
+            <p>6.2 Адміністрація сайту зобов’язана ...</p>
         </section>
 
-        <section id="sharing">
-            <h2>7. Передача третім сторонам</h2>
-            <p>Коли можлива передача (ІТ-провайдери, вимоги закону), гарантії конфіденційності, заборона продажу даних третім особам без згоди.</p>
+        <section id="responsibility">
+            <h2>7. ВІДПОВІДАЛЬНІСТЬ СТОРІН</h2>
+            <p>7.1 Адміністрація сайту ...</p>
+            <p>7.2 У разі втрати ...</p>
         </section>
 
-        <section id="rights">
-            <h2>8. Права користувача</h2>
-            <ul>
-                <li>Доступ, виправлення, обмеження, видалення в межах закону.</li>
-                <li>Відкликання згоди та заперечення проти обробки.</li>
-                <li>Подання скарги до уповноважених органів.</li>
-            </ul>
+        <section id="disputes">
+            <h2>8. ВИРІШЕННЯ СПОРІВ</h2>
+            <p>8.1 До звернення до суду ...</p>
+            <p>8.2 Одержувач претензії ...</p>
+            <p>... до 8.4</p>
         </section>
 
-        <section id="changes">
-            <h2>9. Зміни до політики</h2>
-            <p>Процедура оновлення та спосіб інформування користувачів.</p>
+        <section id="extra">
+            <h2>9. ДОДАТКОВІ УМОВИ</h2>
+            <p>9.1 Адміністрація сайту має право ...</p>
+            <p>9.2 Нова Політика ...</p>
+            <p>9.3 Всі пропозиції або питання ...</p>
         </section>
 
         <section id="contacts">
-            <h2>10. Контакти</h2>
-            <p>E-mail для звернень: <a href="mailto:elitebeauty313@gmail.com">elitebeauty313@gmail.com</a></p>
+            <h2>Контакти</h2>
+            <p>E-mail: <a href="mailto:elitebeauty313@gmail.com">elitebeauty313@gmail.com</a></p>
         </section>
 
         <a href="/" class="back-btn">← Повернутися на головну</a>
@@ -154,9 +160,9 @@
         <nav id="toc"></nav>
     </aside>
 </main>
-
+<footer data-include="/partials/footer.html"></footer>
+<script src="/js/include-partials.js"></script>
 <script>
-    // Генерація TOC з h2
     const doc = document.getElementById('doc');
     const toc = document.getElementById('toc');
     const sections = [...doc.querySelectorAll('section[id]')];
@@ -165,7 +171,6 @@
         return `<a href="#${s.id}">${title}</a>`;
     }).join('');
 
-    // Плавний скрол
     toc.querySelectorAll('a').forEach(a => {
         a.addEventListener('click', e => {
             e.preventDefault();
@@ -174,7 +179,6 @@
         });
     });
 
-    // Підсвічення активного розділу
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             const id = entry.target.getAttribute('id');
