@@ -3,51 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Наші ліцензії - Медлюкс Центр</title>
+    <title>Наші ліцензії — Galchenko Clinic</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Додаткові стилі тільки для цієї сторінки */
-        .license-page-container {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 20px;
-            text-align: center;
+        .page-wrap{max-width:1120px;margin:56px auto;padding:0 20px;}
+        .head{text-align:center;margin-bottom:26px;}
+        .head .section-title{margin-bottom:10px}
+        .head p{color:#5c6b82}
+        .license-grid{
+            display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+            gap:22px;
         }
-        .license-image {
-            max-width: 100%;
-            height: auto;
-            margin-bottom: 30px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        .license-card{
+            background:#fff;border:1px solid #e9eef5;border-radius:14px;
+            box-shadow:0 10px 26px rgba(20,30,60,.06);
+            overflow:hidden;transition:transform .18s ease, box-shadow .18s ease;
+            cursor: zoom-in;
         }
-        .back-link {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #3498db;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
+        .license-card:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(20,30,60,.10);}
+        .license-card img{width:100%;height:auto;display:block}
+
+        .back-btn{
+            display:inline-flex;align-items:center;gap:8px;margin-top:26px;padding:12px 18px;
+            background:#2f80ed;color:#fff;border-radius:10px;text-decoration:none;font-weight:700;
+            box-shadow:0 8px 18px rgba(47,128,237,.18);transition:transform .15s ease, background .2s;
         }
-        .back-link:hover {
-            background-color: #2980b9;
+        .back-btn:hover{transform:translateY(-1px);background:#296fd1}
+
+        /* LIGHTBOX */
+        .lightbox {
+            position: fixed; inset: 0; background: rgba(10,15,25,.85);
+            display: none; align-items: center; justify-content: center;
+            z-index: 9999;
         }
+        .lightbox.open {display:flex;}
+        .lightbox img {
+            max-width: min(92vw, 1200px); max-height: 92vh; border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,.45);
+        }
+        .lightbox .close, .lightbox .prev, .lightbox .next {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(255,255,255,.14); color: #fff; border: none;
+            width: 44px; height: 44px; border-radius: 50%;
+            display:flex; align-items:center; justify-content:center;
+            font-size: 20px; cursor: pointer; transition: background .15s;
+        }
+        .lightbox .close { top: 24px; right: 24px; transform:none; }
+        .lightbox .prev { left: 24px; }
+        .lightbox .next { right: 24px; }
+        .lightbox .close:hover, .lightbox .prev:hover, .lightbox .next:hover { background: rgba(255,255,255,.22); }
+        @media (max-width:768px){ .lightbox .prev{left:8px} .lightbox .next{right:8px} .lightbox .close{right:12px} }
     </style>
 </head>
 <body>
 
-<div class="license-page-container">
-    <h1 class="section-title">Наші ліцензії та сертифікати</h1>
-    <p style="margin-bottom: 40px;">Ми працюємо офіційно та маємо всі необхідні дозвільні документи для надання медичної допомоги.</p>
+<div class="page-wrap">
+    <div class="head">
+        <h1 class="section-title">Наші ліцензії та сертифікати</h1>
+        <p>Ми працюємо офіційно та маємо всі необхідні дозвільні документи.</p>
+    </div>
 
-    <img src="images/license-1.jpg" alt="Ліцензія 1" class="license-image">
+    <div class="license-grid" id="licenseGrid">
+        <!-- додай/заміни свої зображення -->
+        <div class="license-card"><img src="images/license_1.jpg" alt="Ліцензія 1"></div>
+        <div class="license-card"><img src="images/license_2.jpg" alt="Ліцензія 2"></div>
+        <div class="license-card"><img src="images/license_3.jpg" alt="Ліцензія 3"></div>
+        <div class="license-card"><img src="images/license_4.jpg" alt="Ліцензія 4"></div>
+    </div>
 
-    <img src="images/license-2.jpg" alt="Ліцензія 2" class="license-image">
-
-    <a href="/" class="back-link">← Повернутися на головну</a>
+    <a href="/" class="back-btn">← Повернутися на головну</a>
 </div>
 
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" aria-modal="true" role="dialog">
+    <button class="close" aria-label="Закрити" title="Закрити (Esc)">✕</button>
+    <button class="prev" aria-label="Попереднє" title="Попереднє (←)">❮</button>
+    <img id="lightboxImg" src="" alt="">
+    <button class="next" aria-label="Наступне" title="Наступне (→)">❯</button>
+</div>
+
+<script>
+    // SIMPLE LIGHTBOX
+    const grid = document.getElementById('licenseGrid');
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightboxImg');
+    const btnClose = lb.querySelector('.close');
+    const btnPrev = lb.querySelector('.prev');
+    const btnNext = lb.querySelector('.next');
+
+    let images = [];
+    let index = 0;
+
+    function open(i){
+        index = i;
+        lbImg.src = images[index].src;
+        lb.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+    function close(){
+        lb.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+    function prev(){ index = (index - 1 + images.length) % images.length; lbImg.src = images[index].src; }
+    function next(){ index = (index + 1) % images.length; lbImg.src = images[index].src; }
+
+    images = [...grid.querySelectorAll('img')];
+    images.forEach((img, i) => img.addEventListener('click', () => open(i)));
+
+    btnClose.addEventListener('click', close);
+    btnPrev.addEventListener('click', prev);
+    btnNext.addEventListener('click', next);
+    lb.addEventListener('click', (e) => { if(e.target === lb) close(); });
+
+    window.addEventListener('keydown', (e) => {
+        if(!lb.classList.contains('open')) return;
+        if(e.key === 'Escape') close();
+        if(e.key === 'ArrowLeft') prev();
+        if(e.key === 'ArrowRight') next();
+    });
+</script>
 </body>
 </html>

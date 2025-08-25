@@ -309,3 +309,12 @@ a {
     .features-grid { grid-template-columns: 1fr; }
     .footer-container { grid-template-columns: 1fr; }
 }
+
+/* Узгоджена типографіка для “документних” сторінок */
+.section-title { letter-spacing:.2px; }
+
+/* Темний синій градієнт для верхніх банерів (за бажанням) */
+.page-hero {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: #fff; padding: 36px 20px; text-align:center;
+}
