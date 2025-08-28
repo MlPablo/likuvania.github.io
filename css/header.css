@@ -1,5 +1,9 @@
 .site-header{position:sticky;top:0;z-index:1000;width:100%;background:#fff;border-bottom:1px solid #e5e5e5}
-.header__inner{max-width:1200px;margin:0 auto;padding:10px 20px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:16px}
+.header__inner{
+    max-width:1200px; margin:0 auto;
+    display:grid; grid-template-columns:auto 1fr auto;
+    align-items:center; gap:16px; padding:10px 20px;
+}
 .header__logo img{height:70px;width:auto;display:block} /* збільшене лого */
 
 .header__nav{display:flex;justify-content:center;gap:26px}
@@ -12,22 +16,59 @@
 
 /* бургер */
 .hamburger{display:none;width:40px;height:40px;border:0;background:transparent;color:#1e3c72;cursor:pointer;position:relative}
-.hamburger span{position:absolute;left:8px;right:8px;height:2px;background:currentColor;transition:transform .25s,opacity .2s}
-.hamburger span:nth-child(1){top:12px}
-.hamburger span:nth-child(2){top:19px}
-.hamburger span:nth-child(3){top:26px}
-.hamburger.is-open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-.hamburger.is-open span:nth-child(2){opacity:0}
-.hamburger.is-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
-/* мобільне меню (оверлей, без right:-100%) */
-.mobile-nav{position:fixed;inset:0;background:rgba(25,42,64,.96);color:#fff;transform:translateX(100%);transition:transform .28s ease;z-index:1100}
-.mobile-nav.is-open{transform:translateX(0)}
-.mobile-nav__content{max-width:520px;margin:80px auto 0;padding:0 24px;display:flex;flex-direction:column;gap:18px}
-.mobile-nav__content a{color:#fff;font-weight:700;font-size:1.05rem}
-.mobile-nav__content a:hover{color:var(--brand)}
+/* Бургер */
+.hamburger{
+    display:none; /* вмикаємо нижче у @media */
+    width:40px; height:40px;
+    border:none; background:transparent; cursor:pointer; position:relative;
+    justify-self:end;        /* <-- тримає кнопку в правому краю 3-го стовпця */
+    margin-left:auto;        /* <-- дублюємо для надійності */
+}
 
+/* Лінії бургера */
+.hamburger span{
+    position:absolute; left:8px; right:8px; height:2px; background:currentColor;
+    transition:transform .25s ease, opacity .2s;
+}
+.hamburger span:nth-child(1){ top:12px }
+.hamburger span:nth-child(2){ top:19px }
+.hamburger span:nth-child(3){ top:26px }
+
+/* Колір іконки залежно від стану хедера */
+.header--transparent .hamburger{ color:#fff }
+.header--solid .hamburger{ color:#1e3c72 }
+
+/* Стан “хрестика” */
+.hamburger.is-open span:nth-child(1){ transform:translateY(7px) rotate(45deg) }
+.hamburger.is-open span:nth-child(2){ opacity:0 }
+.hamburger.is-open span:nth-child(3){ transform:translateY(-7px) rotate(-45deg) }
+
+/* Десктоп-меню */
+.header__nav{ display:flex; justify-content:center; gap:26px }
+.header__nav a{ font-weight:600; padding:8px 0; color:#1e3c72; transition:color .2s }
+
+/* Мобільне меню-оверлей (щоб не було білого “хвоста” праворуч) */
+.mobile-nav{
+    position:fixed; inset:0;
+    width:100vw; height:100vh;            /* заповнюємо весь екран */
+    background:rgba(25,42,64,.96);
+    color:#fff; transform:translateX(100%); transition:transform .28s ease;
+    z-index:1100;
+}
+.mobile-nav.is-open{ transform:translateX(0) }
+.mobile-nav__content{
+    max-width:520px; margin:80px auto 0; padding:0 24px;
+    display:flex; flex-direction:column; gap:18px;
+}
+.mobile-nav__content a{ color:#fff; font-weight:700; font-size:1.05rem; text-decoration:none }
+.mobile-nav__content a:hover{ color:var(--brand) }
+
+/* Щоби не було горизонтального скролу та відступу справа на мобілці */
+html, body{ overflow-x:hidden }
+
+/* Точки перелому */
 @media (max-width:900px){
-    .header__nav{display:none}
-    .hamburger{display:inline-block}
+    .header__nav{ display:none }   /* ховаємо десктоп-меню */
+    .hamburger{ display:inline-block } /* показуємо бургер */
 }

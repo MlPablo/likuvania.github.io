@@ -1,31 +1,31 @@
-<header class="site-header">
+<header class="site-header header--solid">
     <div class="header__inner">
-        <a href="/" class="header__logo">
-            <img src="images/logo.png" alt="Galchenko Clinic">
+        <a href="/" class="header__logo" aria-label="Головна">
+            <img src="/images/logo.png" alt="Galchenko Clinic">
         </a>
 
-        <nav class="header__nav" aria-label="Головне меню">
-            <a href="/services.html">Послуги</a>
+        <nav class="header__nav" aria-label="Головна навігація">
+            <a href="/">Головна</a>
+            <a href="/services.html">Всі послуги</a>
+            <a href="/contacts.html">Контакти</a>
             <a href="/privacy.html">Політика конфіденційності</a>
             <a href="/licenses.html">Ліцензія</a>
-            <a href="/contacts.html">Контакти</a>
         </nav>
 
-        <div class="header__cta">
-            <!-- опціонально: <a class="btn btn-call btn-call--small" href="tel:+380736862845">Терміновий виклик</a> -->
-            <button class="hamburger" aria-label="Меню">
-                <span></span><span></span><span></span>
-            </button>
-        </div>
+        <!-- бургер -->
+        <button class="hamburger" id="hamburger" aria-label="Меню" aria-expanded="false" aria-controls="mobileNav">
+            <span></span><span></span><span></span>
+        </button>
     </div>
-</header>
 
-<!-- Мобільне меню поруч (у тому ж partial або в сторінці) -->
-<nav class="mobile-nav" aria-label="Мобільне меню">
-    <div class="mobile-nav__content">
-        <a href="/services.html">Послуги</a>
-        <a href="/privacy.html">Політика конфіденційності</a>
-        <a href="/licenses.html">Ліцензія</a>
-        <a href="/contacts.html">Контакти</a>
-    </div>
-</nav>
+    <!-- мобільне меню -->
+    <nav class="mobile-nav" id="mobileNav" aria-hidden="true">
+        <div class="mobile-nav__content">
+            <a href="/">Головна</a>
+            <a href="/services.html">Всі послуги</a>
+            <a href="/contacts.html">Контакти</a>
+            <a href="/privacy.html">Політика конфіденційності</a>
+            <a href="/licenses.html">Ліцензія</a>
+        </div>
+    </nav>
+</header>

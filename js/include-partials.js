@@ -82,3 +82,38 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
+(function () {
+    const targets = document.querySelectorAll('.features .feature-item, .services-grid .service-card');
+    targets.forEach(el => el.classList.add('reveal'));
+    const io = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+                obs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+    targets.forEach(el => io.observe(el));
+})();
+
+function initHeaderMenu(){
+    const burger = document.querySelector(".hamburger");
+    const mobile = document.querySelector(".mobile-nav");
+    if(!burger || !mobile) return;
+
+    const toggle = () => {
+        const open = !mobile.classList.contains("is-open");
+        mobile.classList.toggle("is-open", open);
+        burger.classList.toggle("is-open", open);
+        burger.setAttribute("aria-expanded", open ? "true" : "false");
+        mobile.setAttribute("aria-hidden", open ? "false" : "true");
+        document.body.style.overflow = open ? "hidden" : "";
+    };
+
+    burger.addEventListener("click", toggle);
+    mobile.querySelectorAll("a").forEach(a => a.addEventListener("click", toggle));
+}
+
+document.addEventListener("partials:loaded", initHeaderMenu);
+document.addEventListener("DOMContentLoaded", initHeaderMenu);

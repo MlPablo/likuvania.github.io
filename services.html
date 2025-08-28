@@ -76,38 +76,5 @@
 
 <!-- Підвантаження паршіалів -->
 <script src="js/include-partials.js"></script>
-
-<!-- Легка поява карток (опціонально) -->
-<script>
-    document.addEventListener("partials:loaded", () => {
-        // ініціалізація бургера (спільна логіка вже є у тебе; дублювати не потрібно, якщо підключено глобально)
-        const burger = document.querySelector(".hamburger");
-        const mobile = document.querySelector(".mobile-nav");
-        if (burger && mobile) {
-            const toggle = () => {
-                const open = !mobile.classList.contains("is-open");
-                mobile.classList.toggle("is-open", open);
-                burger.classList.toggle("is-open", open);
-                document.body.style.overflow = open ? "hidden" : "";
-            };
-            burger.addEventListener("click", toggle);
-            mobile.querySelectorAll("a").forEach(a => a.addEventListener("click", toggle));
-        }
-    });
-
-    // reveal
-    (function(){
-        const els = document.querySelectorAll('.svc-card');
-        const io = new IntersectionObserver((entries, obs)=>{
-            entries.forEach(e=>{
-                if(e.isIntersecting){
-                    e.target.classList.add('show');
-                    obs.unobserve(e.target);
-                }
-            })
-        },{threshold:.15});
-        els.forEach(el=>{ el.classList.add('reveal'); io.observe(el); });
-    })();
-</script>
 </body>
 </html>
