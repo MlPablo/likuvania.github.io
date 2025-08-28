@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакти — Galchenko Clinic</title>
+
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
+    <!-- базові стилі + стилі сторінки -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/page-contacts.css">
+</head>
+<body>
+
+<!-- хедер-паршіал -->
+<header data-include="partials/header.html"></header>
+
+<!-- hero -->
+<header class="page-hero contacts-hero">
+    <div class="wrap">
+        <h1>Контакти</h1>
+        <p>Працюємо 24/7. Телефонуйте — допоможемо</p>
+    </div>
+</header>
+
+<main class="contacts-wrap">
+    <section class="card">
+        <h3>Зв’язок</h3>
+
+        <div class="contact-list">
+            <div class="contact-item">
+                <span class="ci">📞</span>
+                <p>Телефон: <a href="tel:+380736862845">+38 073 686 28 45</a></p>
+            </div>
+            <div class="contact-item">
+                <span class="ci">✉️</span>
+                <p>E-mail: <a href="mailto:elitebeauty313@gmail.com">elitebeauty313@gmail.com</a></p>
+            </div>
+            <div class="contact-item">
+                <span class="ci">🕒</span>
+                <p>Графік: цілодобово, без вихідних</p>
+            </div>
+            <div class="contact-item">
+                <span class="ci">📝</span>
+                <p>Прийом — за попереднім записом</p>
+            </div>
+        </div>
+
+        <p style="margin-top:16px;">
+            <a class="btn btn-call btn-call--small" href="tel:+380736862845">📞 Подзвонити зараз</a>
+            <a class="btn-ghost" href="index.html" style="margin-left:8px;">← На головну</a>
+        </p>
+    </section>
+
+    <section class="card map">
+        <h3>Де ми знаходимося</h3>
+        <p>вул. Святослава Хороброго 2, м. Київ, Україна</p>
+        <div class="map-frame">
+            <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2542.0908681112223!2d30.456711500000008!3d50.4207786!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4ceb43cbaf865%3A0xb14361101b66f19c!2z0YPQuy4g0KHQstGP0YLQvtGB0LvQsNCy0LAg0KXRgNCw0LHRgNC-0LPQviwgMiwg0JrQuNC10LIsIDAyMDAw!5e0!3m2!1sru!2sua!4v1753007614389!5m2!1sru!2sua"
+                    loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen>
+            </iframe>
+        </div>
+    </section>
+</main>
+
+<!-- футер-паршіал -->
+<footer data-include="partials/footer.html"></footer>
+
+<!-- підвантаження паршіалів -->
+<script src="js/include-partials.js"></script>
+
+<!-- ініціалізація бургера після завантаження паршіалів -->
+<script>
+    function initHeaderMenu(){
+        const burger = document.querySelector(".hamburger");
+        const mobile = document.querySelector(".mobile-nav");
+        if(!burger || !mobile) return;
+        const toggle = () => {
+            const open = !mobile.classList.contains("is-open");
+            mobile.classList.toggle("is-open", open);
+            burger.classList.toggle("is-open", open);
+            document.body.style.overflow = open ? "hidden" : "";
+        };
+        burger.addEventListener("click", toggle);
+        mobile.querySelectorAll("a").forEach(a => a.addEventListener("click", toggle));
+    }
+    document.addEventListener("partials:loaded", initHeaderMenu);
+    document.addEventListener("DOMContentLoaded", initHeaderMenu);
+</script>
+</body>
+</html>

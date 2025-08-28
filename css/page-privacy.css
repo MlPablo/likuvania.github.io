@@ -1,0 +1,8 @@
+.page-hero{background:linear-gradient(135deg,#1e3c72 0%,#2a5298 100%);color:#fff;padding:48px 20px;text-align:center}
+.doc-wrap{max-width:1120px;margin:28px auto 56px;padding:0 20px;display:grid;grid-template-columns:1fr 290px;gap:28px}
+.doc-card{background:#fff;border:1px solid #e9eef5;border-radius:16px;padding:28px;box-shadow:0 10px 30px rgba(20,30,60,.06)}
+.toc{position:sticky;top:24px;background:#fff;border:1px solid #e9eef5;border-radius:14px;padding:18px;box-shadow:0 10px 24px rgba(20,30,60,.05);height:fit-content}
+.toc nav a{display:block;padding:8px 10px;border-radius:8px;color:#445066;text-decoration:none}
+.toc nav a:hover{background:#f2f6ff;color:#1b2a49}
+.toc nav a.active{background:#e8f0ff;color:#1b2a49;font-weight:700}
+@media(max-width:980px){ .doc-wrap{grid-template-columns:1fr} .toc{order:-1;margin-bottom:6px} }

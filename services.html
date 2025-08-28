@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Послуги — Galchenko Clinic</title>
+    <meta name="description" content="Комплексні послуги: виведення з запою на дому, кодування, лікування залежностей, психіатрична допомога, стаціонар." />
+
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
+    <!-- базові стилі + стилі сторінки (УВАГА: відносні шляхи) -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/page-services.css">
+</head>
+<body>
+
+<!-- Хедер як паршіал -->
+<header data-include="partials/header.html"></header>
+
+<!-- Hero -->
+<header class="page-hero services-hero">
+    <div class="wrap">
+        <h1>Наші послуги</h1>
+        <p>Комплексна допомога: від детоксикації до підтримувальної терапії</p>
+    </div>
+</header>
+
+<main class="services-wrap">
+    <div class="svc-grid">
+        <article class="svc-card reveal">
+            <span class="svc-badge">Дім</span>
+            <h3>Виведення з запою на дому</h3>
+            <p>Безпечна інфузійна терапія з корекцією електролітів, вітамінною підтримкою та контролем тиску.</p>
+        </article>
+
+        <article class="svc-card reveal">
+            <span class="svc-badge">Підтримка</span>
+            <h3>Кодування / Блокади</h3>
+            <p>Підбір сучасних медикаментозних методів утримання від алкоголю з урахуванням супутніх станів.</p>
+        </article>
+
+        <article class="svc-card reveal">
+            <span class="svc-badge">Програма</span>
+            <h3>Лікування алкоголізму</h3>
+            <p>Індивідуальні схеми, детоксикація, підтримка психоемоційного стану, робота з мотивацією.</p>
+        </article>
+
+        <article class="svc-card reveal">
+            <span class="svc-badge">Детокс</span>
+            <h3>Лікування наркозалежності</h3>
+            <p>Детоксикація, купірування абстиненції, рекомендації щодо подальшої реабілітації.</p>
+        </article>
+
+        <article class="svc-card reveal">
+            <span class="svc-badge">Психіатрія</span>
+            <h3>Лікування психічних розладів</h3>
+            <p>Панічні атаки, тривога, депресія — підбір терапії, стабілізація стану, супровід.</p>
+        </article>
+
+        <article class="svc-card reveal">
+            <span class="svc-badge">Стаціонар</span>
+            <h3>Стаціонарне лікування</h3>
+            <p>Організація госпіталізації у партнерському стаціонарі при необхідності інтенсивного спостереження.</p>
+        </article>
+    </div>
+
+    <p class="services-note">
+        <a class="btn-ghost" href="index.html">← Повернутися на головну</a>
+    </p>
+</main>
+
+<!-- Футер як паршіал -->
+<footer data-include="partials/footer.html"></footer>
+
+<!-- Підвантаження паршіалів -->
+<script src="js/include-partials.js"></script>
+
+<!-- Легка поява карток (опціонально) -->
+<script>
+    document.addEventListener("partials:loaded", () => {
+        // ініціалізація бургера (спільна логіка вже є у тебе; дублювати не потрібно, якщо підключено глобально)
+        const burger = document.querySelector(".hamburger");
+        const mobile = document.querySelector(".mobile-nav");
+        if (burger && mobile) {
+            const toggle = () => {
+                const open = !mobile.classList.contains("is-open");
+                mobile.classList.toggle("is-open", open);
+                burger.classList.toggle("is-open", open);
+                document.body.style.overflow = open ? "hidden" : "";
+            };
+            burger.addEventListener("click", toggle);
+            mobile.querySelectorAll("a").forEach(a => a.addEventListener("click", toggle));
+        }
+    });
+
+    // reveal
+    (function(){
+        const els = document.querySelectorAll('.svc-card');
+        const io = new IntersectionObserver((entries, obs)=>{
+            entries.forEach(e=>{
+                if(e.isIntersecting){
+                    e.target.classList.add('show');
+                    obs.unobserve(e.target);
+                }
+            })
+        },{threshold:.15});
+        els.forEach(el=>{ el.classList.add('reveal'); io.observe(el); });
+    })();
+</script>
+</body>
+</html>

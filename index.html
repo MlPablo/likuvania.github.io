@@ -4,19 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Виведення з запою - Допомога на дому</title>
-    <link rel="stylesheet" href="style.css">
+
+    <!-- СТИЛІ: тільки відносні шляхи -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/page-home.css">
+
+    <!-- Шрифти/іконка -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="images/logo_small.png">
+    <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
 <body>
-<header data-include="/partials/header.html"></header>
+
+<!-- Паршіали: тільки відносні шляхи -->
+<header data-include="partials/header.html"></header>
+
 <section class="hero">
     <div class="hero-content">
         <h1>Лікування алкоголізму та виведення з запою</h1>
         <p class="subtitle">Професійна допомога при інтоксикаційному синдромі на дому</p>
-        <a href="tel:+380736862845" class="btn">Терміновий виклик</a>
+        <a href="tel:+380736862845" class="btn btn-call">📞 Терміновий виклик</a>
     </div>
 </section>
 
@@ -48,7 +58,7 @@
 <section class="guarantee">
     <div class="guarantee-content">
         <p>Працюємо з усіма рівнями складності. Гарантія покращення самопочуття. Консультація 24/7.
-            <span class="price">Від 3000</span>
+            <span class="price">Від ₴3000</span>
         </p>
     </div>
 </section>
@@ -87,7 +97,9 @@
     <h2 class="section-title">Як нас знайти</h2>
     <div class="location-container">
         <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2542.0908681112223!2d30.456711500000008!3d50.4207786!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4ceb43cbaf865%3A0xb14361101b66f19c!2z0YPQuy4g0KHQstGP0YLQvtGB0LvQsNCy0LAg0KXRgNCw0LHRgNC-0LPQviwgMiwg0JrQuNC10LIsIDAyMDAw!5e0!3m2!1sru!2sua!4v1753007614389!5m2!1sru!2sua" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2542.0908681112223!2d30.456711500000008!3d50.4207786!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4ceb43cbaf865%3A0xb14361101b66f19c!2z0YPQuy4g0KHQstGP0YLQvtGB0LvQsNCy0LAg0KXRgNCw0LHRgNC-0LPQviwgMiwg0JrQuNC10LIsIDAyMDAw!5e0!3m2!1sru!2sua!4v1753007614389!5m2!1sru!2sua"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
         <div class="address-details">
             <h3>Наша адреса</h3>
@@ -99,27 +111,45 @@
     </div>
 </section>
 
+<!-- Футер-паршіал -->
+<footer data-include="partials/footer.html"></footer>
+
+<!-- Підвантаження паршіалів (перед іншим JS!) -->
+<script src="js/include-partials.js"></script>
+
+
 <script>
-    // Додаємо клас .reveal та спостерігаємо за елементами
-    (function () {
-        const targets = document.querySelectorAll(
-            '.features .feature-item, .services-grid .service-card'
-        );
-        targets.forEach(el => el.classList.add('reveal'));
+  // reveal-анімація
+  (function () {
+    const targets = document.querySelectorAll('.features .feature-item, .services-grid .service-card');
+    targets.forEach(el => el.classList.add('reveal'));
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    targets.forEach(el => io.observe(el));
+  })();
 
-        const io = new IntersectionObserver((entries, obs) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
-                    obs.unobserve(entry.target); // анімація один раз
-                }
-            });
-        }, { threshold: 0.2 });
-
-        targets.forEach(el => io.observe(el));
-    })();
+  // ініціалізація бургера ПІСЛЯ підвантаження паршіалів
+  function initHeaderMenu(){
+    const burger = document.querySelector(".hamburger");
+    const mobile = document.querySelector(".mobile-nav");
+    if(!burger || !mobile) return;
+    const toggle = () => {
+      const open = !mobile.classList.contains("is-open");
+      mobile.classList.toggle("is-open", open);
+      burger.classList.toggle("is-open", open);
+      document.body.style.overflow = open ? "hidden" : "";
+    };
+    burger.addEventListener("click", toggle);
+    mobile.querySelectorAll("a").forEach(a => a.addEventListener("click", toggle));
+  }
+  document.addEventListener("partials:loaded", initHeaderMenu);
+  document.addEventListener("DOMContentLoaded", initHeaderMenu);
 </script>
-<footer data-include="/partials/footer.html"></footer>
-<script src="/js/include-partials.js"></script>
 </body>
 </html>

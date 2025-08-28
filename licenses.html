@@ -2,9 +2,14 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="images/favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Наші ліцензії — Galchenko Clinic</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- базові стилі + стилі сторінки -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/page-licenses.css">
     <style>
         .page-wrap{max-width:1120px;margin:56px auto;padding:0 20px;}
         .head{text-align:center;margin-bottom:26px;}
@@ -56,6 +61,7 @@
     </style>
 </head>
 <body>
+<header data-include="partials/header.html"></header>
 
 <div class="page-wrap">
     <div class="head">
@@ -122,7 +128,7 @@
         if(e.key === 'ArrowRight') next();
     });
 </script>
-<footer data-include="/partials/footer.html"></footer>
-<script src="/js/include-partials.js"></script>
+<footer data-include="partials/footer.html"></footer>
+<script src="js/include-partials.js"></script>
 </body>
 </html>
