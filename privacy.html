@@ -197,6 +197,45 @@
     sections.forEach(sec => observer.observe(sec));
 </script>
 <script>
+    // Перетворюємо Зміст на мобільний дропдаун
+    (function(){
+        const tocBox = document.querySelector('.toc');
+        const title = tocBox?.querySelector('h3');
+
+        function ensureMobileToc(){
+            if(!tocBox) return;
+            const isMobile = window.matchMedia('(max-width:980px)').matches;
+
+            // Якщо мобілка — робимо кнопку, якщо ні — повертаємо як було
+            if(isMobile){
+                if(!tocBox.querySelector('.toc-toggle')){
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'toc-toggle';
+                    btn.innerHTML = '<span>Зміст</span><span class="chev">▾</span>';
+                    if(title) title.replaceWith(btn);
+                    btn.addEventListener('click', () => tocBox.classList.toggle('is-open'));
+                }
+                // За замовчуванням закрито
+                tocBox.classList.remove('is-open');
+            } else {
+                // Десктоп: повертаємо заголовок, якщо його немає
+                const toggle = tocBox.querySelector('.toc-toggle');
+                if(toggle){
+                    const h3 = document.createElement('h3');
+                    h3.textContent = 'Зміст';
+                    toggle.replaceWith(h3);
+                }
+                tocBox.classList.remove('is-open');
+            }
+        }
+
+        // ініт після побудови пунктів змісту (у тебе вже є генерація #toc вище)
+        document.addEventListener('DOMContentLoaded', ensureMobileToc);
+        window.addEventListener('resize', ensureMobileToc);
+    })();
+</script>
+<script>
     // reveal-анімація
     (function () {
         const targets = document.querySelectorAll('.features .feature-item, .services-grid .service-card');
