@@ -98,12 +98,13 @@ document.addEventListener("DOMContentLoaded", () => {
 })();
 
 function initHeaderMenu(){
-    const burger = document.querySelector(".hamburger");
-    const mobile = document.querySelector(".mobile-nav");
+    const burger  = document.querySelector(".hamburger");
+    const mobile  = document.querySelector(".mobile-nav");
+    const closeBtn = document.getElementById("mobileClose");
     if(!burger || !mobile) return;
 
-    const toggle = () => {
-        const open = !mobile.classList.contains("is-open");
+    const toggle = (force) => {
+        const open = typeof force === "boolean" ? force : !mobile.classList.contains("is-open");
         mobile.classList.toggle("is-open", open);
         burger.classList.toggle("is-open", open);
         burger.setAttribute("aria-expanded", open ? "true" : "false");
@@ -111,8 +112,15 @@ function initHeaderMenu(){
         document.body.style.overflow = open ? "hidden" : "";
     };
 
-    burger.addEventListener("click", toggle);
-    mobile.querySelectorAll("a").forEach(a => a.addEventListener("click", toggle));
+    burger.addEventListener("click", () => toggle());
+    // Кнопка закриття всередині оверлею
+    if (closeBtn) closeBtn.addEventListener("click", () => toggle(false));
+    // Закриваємо по кліку на пункт меню
+    mobile.querySelectorAll("a").forEach(a => a.addEventListener("click", () => toggle(false)));
+    // Закриваємо по Escape
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && mobile.classList.contains("is-open")) toggle(false);
+    });
 }
 
 document.addEventListener("partials:loaded", initHeaderMenu);
