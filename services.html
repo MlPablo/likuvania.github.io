@@ -76,5 +76,20 @@
 
 <!-- Підвантаження паршіалів -->
 <script src="js/include-partials.js"></script>
+<script>
+    (function () {
+        const targets = document.querySelectorAll('.svc-card.reveal');
+        if (!targets.length) return;
+        const io = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        targets.forEach(el => io.observe(el));
+    })();
+</script>
 </body>
 </html>
