@@ -29,3 +29,13 @@ a{color:inherit;text-decoration:none}
 
 /* технічне */
 html,body{max-width:100%;overflow-x:hidden} /* щоб мобільне меню не давало білий край */
+
+/* За замовчуванням мобільна кнопка схована */
+.call-desktop { display:none; }
+.call-mobile { display:inline-block; }
+
+/* На десктопі — показуємо номер, ховаємо кнопку */
+@media (min-width: 1025px) {
+    .call-desktop { display:inline-block; }
+    .call-mobile { display:none; }
+}
