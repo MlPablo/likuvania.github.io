@@ -75,11 +75,6 @@ html, body { overflow-x: hidden; }
 .header--transparent .hamburger{ color:#fff }
 .header--solid .hamburger{ color:#1e3c72 }
 
-/* Анімація бургера у «хрестик» */
-.hamburger.is-open span:nth-child(1){ transform:translateY(7px) rotate(45deg) }
-.hamburger.is-open span:nth-child(2){ opacity:0 }
-.hamburger.is-open span:nth-child(3){ transform:translateY(-7px) rotate(-45deg) }
-
 /* Опційно: тримаємо хедер поверх усього (щоб бургер був клікабельний, якщо треба) */
 .site-header{ z-index:1201; }
 
