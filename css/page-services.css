@@ -77,3 +77,69 @@
     .page-hero{ padding:40px 16px }
     .services-wrap{ padding:0 16px }
 }
+
+/* ===== Accordion Styles for Services ===== */
+.svc-card {
+    /* (
+        Ваші існуючі стилі для .svc-card залишаються тут.
+        Цей код лише додає нові можливості, не замінюючи старі.
+    ) */
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, margin-bottom .3s ease; /* Added margin-bottom transition */
+}
+
+.svc-card__header {
+    cursor: pointer;
+    position: relative;
+    padding-right: 30px; /* Space for the icon */
+}
+
+.svc-card__header::after {
+    content: '+';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--brand);
+    transition: transform .3s ease;
+}
+
+.svc-card.is-open .svc-card__header::after {
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.svc-card__details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out, margin-top 0.5s ease-out;
+    margin-top: 0;
+}
+
+.svc-card.is-open {
+    margin-bottom: 10px;
+}
+
+.svc-card.is-open .svc-card__details {
+    max-height: 2000px; /* Large enough to fit content */
+    margin-top: 20px;
+    transition: max-height 0.7s ease-in, margin-top 0.7s ease-in;
+}
+
+.svc-card__details h4 {
+    color: #1b2a49;
+    font-size: 1.1rem;
+    margin: 16px 0 8px;
+}
+
+.svc-card__details ul {
+    list-style: disc;
+    padding-left: 20px;
+    margin-bottom: 12px;
+}
+
+.svc-card__details li {
+    margin-bottom: 8px;
+    color: #3b4655;
+    line-height: 1.7;
+}
