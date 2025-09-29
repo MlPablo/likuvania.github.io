@@ -125,3 +125,59 @@ function initHeaderMenu(){
 
 document.addEventListener("partials:loaded", initHeaderMenu);
 document.addEventListener("DOMContentLoaded", initHeaderMenu);
+// Debug pricing modal
+document.addEventListener("partials:loaded", () => {
+    console.log("Partials loaded, initializing pricing modal...");
+    
+    const pricingBtns = document.querySelectorAll("[data-pricing-btn]");
+    const pricingModal = document.getElementById("pricingModal");
+    
+    console.log("Pricing buttons found:", pricingBtns.length);
+    console.log("Pricing modal found:", !!pricingModal);
+    
+    if (!pricingModal) {
+        console.error("Pricing modal not found!");
+        return;
+    }
+
+    const openModal = () => {
+        console.log("Opening pricing modal...");
+        pricingModal.classList.add("is-open");
+        document.body.style.overflow = "hidden";
+    };
+
+    const closeModal = () => {
+        console.log("Closing pricing modal...");
+        pricingModal.classList.remove("is-open");
+        document.body.style.overflow = "";
+    };
+
+    // Open modal on button click
+    pricingBtns.forEach(btn => {
+        console.log("Adding click listener to button");
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            openModal();
+        });
+    });
+
+    // Close modal on close button click
+    const closeBtn = pricingModal.querySelector(".pricing-modal__close");
+    if (closeBtn) {
+        closeBtn.addEventListener("click", closeModal);
+    }
+
+    // Close modal on backdrop click
+    pricingModal.addEventListener("click", (e) => {
+        if (e.target === pricingModal) {
+            closeModal();
+        }
+    });
+
+    // Close modal on Escape key
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && pricingModal.classList.contains("is-open")) {
+            closeModal();
+        }
+    });
+});

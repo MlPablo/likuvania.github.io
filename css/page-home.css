@@ -86,3 +86,13 @@
 .service-card p{
     color:#555;
 }
+/* Pricing button in guarantee section */
+.guarantee-content button {
+    margin-top: 12px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 700;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

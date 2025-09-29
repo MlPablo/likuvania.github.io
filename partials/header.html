@@ -1,38 +1,60 @@
-<header class="site-header header--solid">
+<header class="site-header header--transparent" data-header>
     <div class="header__inner">
-        <a href="/" class="header__logo" aria-label="Головна">
+        <a href="/" class="header__logo" aria-label="Galchenko Clinic">
             <img src="/images/logo.png" alt="Galchenko Clinic">
         </a>
 
-        <nav class="header__nav" aria-label="Головна навігація">
-            <a href="/">Головна</a>
-            <a href="/services.html">Всі послуги</a>
-            <a href="/contacts.html">Контакти</a>
-            <a href="/blog.html">Блог</a>
+        <nav class="header__nav" aria-label="Головне меню">
+            <a href="/services.html" class="nav--dark">Послуги</a>
             <a href="/privacy.html">Політика конфіденційності</a>
             <a href="/licenses.html">Ліцензія</a>
+            <a href="/contacts.html" class="nav--dark">Контакти</a>
         </nav>
 
-        <!-- бургер -->
-        <button class="hamburger" id="hamburger" aria-label="Меню" aria-expanded="false" aria-controls="mobileNav">
-            <span></span><span></span><span></span>
-        </button>
-    </div>
-
-    <!-- мобільне меню -->
-    <nav class="mobile-nav" id="mobileNav" aria-hidden="true">
-        <!-- Кнопка закриття всередині оверлею -->
-        <button class="mobile-close" id="mobileClose" aria-label="Закрити меню">
-            <span></span><span></span>
-        </button>
-
-        <div class="mobile-nav__content">
-            <a href="/">Головна</a>
-            <a href="/services.html">Всі послуги</a>
-            <a href="/contacts.html">Контакти</a>
-            <a href="/blog.html">Блог</a>
-            <a href="/privacy.html">Політика конфіденційності</a>
-            <a href="/licenses.html">Ліцензія</a>
+        <div class="header__cta">
+            <button class="hamburger" aria-label="Меню" aria-controls="mobileNav" aria-expanded="false" data-burger>
+                <span></span><span></span><span></span>
+            </button>
         </div>
-    </nav>
+    </div>
 </header>
+
+<nav class="mobile-nav" id="mobileNav" aria-label="Мобільне меню" data-mobile-nav>
+    <div class="mobile-nav__content">
+        <a href="/services.html">Послуги</a>
+        <a href="/privacy.html">Політика конфіденційності</a>
+        <a href="/licenses.html">Ліцензія</a>
+        <a href="/contacts.html">Контакти</a>
+    </div>
+</nav>
+
+<!-- Pricing Modal -->
+<div class="pricing-modal" id="pricingModal" aria-modal="true" role="dialog">
+    <div class="pricing-modal__content">
+        <button class="pricing-modal__close" aria-label="Закрити">✕</button>
+        <h2>Наші ціни</h2>
+        <div class="pricing-list">
+            <div class="pricing-item">
+                <h3>Амбулаторне лікування</h3>
+                <span class="price">від 3500 грн</span>
+            </div>
+            <div class="pricing-item">
+                <h3>Детоксикаційна терапія</h3>
+                <p class="price-desc">(виведення з запою, психоактивні речовини, наркотики)</p>
+                <span class="price">від 4500 грн</span>
+            </div>
+            <div class="pricing-item">
+                <h3>Підтримуюча терапія</h3>
+                <p class="price-desc">(вітамінний комплекс)</p>
+                <span class="price">від 4000 грн</span>
+            </div>
+            <div class="pricing-item">
+                <h3>Медикаментозне лікування</h3>
+                <p class="price-desc">(алкозалежних, наркозалежних)</p>
+                <span class="price">від 6500 грн</span>
+            </div>
+        </div>
+        <p class="pricing-note">Консультація 24/7. Точну ціну уточнюйте за телефоном.</p>
+        <a href="tel:+380736862845" class="btn btn-call">📞 Подзвонити</a>
+    </div>
+</div>
