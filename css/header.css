@@ -279,3 +279,39 @@ html, body { overflow-x: hidden; }
 .hamburger.is-open span:nth-child(3) {
     transform: rotate(-45deg) translate(7px, -6px);
 }
+
+/* Білий хрестик для відкритого бургер-меню */
+.hamburger.is-open {
+    color: #fff !important;
+}
+
+/* Стилі для кнопки закриття в мобільному меню */
+.mobile-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.mobile-close span {
+    position: absolute;
+    left: 8px;
+    right: 8px;
+    top: 19px;
+    height: 2px;
+    background: #fff;
+    transition: transform 0.3s ease;
+}
+
+.mobile-close span:first-child {
+    transform: rotate(45deg);
+}
+
+.mobile-close span:last-child {
+    transform: rotate(-45deg);
+}
