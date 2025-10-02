@@ -12,12 +12,6 @@
 .header__nav{ display:flex; justify-content:center; gap:26px }
 .header__nav a{ font-weight:600; padding:8px 0; color:#1e3c72; transition:color .2s }
 
-/* Точки перелому */
-@media (max-width:900px){
-    .header__nav{ display:none }   /* ховаємо десктоп-меню */
-    .hamburger{ display:inline-block } /* показуємо бургер */
-}
-
 /* Щоб не було горизонтального скролу */
 html, body { overflow-x: hidden; }
 
@@ -62,6 +56,7 @@ html, body { overflow-x: hidden; }
     align-items:center; gap:16px; padding:10px 20px;
 }
 .hamburger{
+    color: #1e3c72;
     display:none; width:40px; height:40px; border:none; background:transparent; cursor:pointer; position:relative;
     justify-self:end; margin-left:auto;
 }
@@ -72,17 +67,14 @@ html, body { overflow-x: hidden; }
 .hamburger span:nth-child(1){ top:12px }
 .hamburger span:nth-child(2){ top:19px }
 .hamburger span:nth-child(3){ top:26px }
-.header--transparent .hamburger{ color:#fff }
-.header--solid .hamburger{ color:#1e3c72 }
+.header--transparent .hamburger{
+    color:#fff }
+.header--solid .hamburger{
+    color:#1e3c72 }
 
 /* Опційно: тримаємо хедер поверх усього (щоб бургер був клікабельний, якщо треба) */
 .site-header{ z-index:1201; }
 
-/* Мобільна точка перелому */
-@media (max-width:900px){
-    .header__nav{ display:none }
-    .hamburger{ display:inline-block }
-}
 /* Pricing Button */
 .btn-pricing {
     background: var(--brand);
@@ -230,4 +222,60 @@ html, body { overflow-x: hidden; }
     .pricing-item {
         padding: 16px;
     }
+}
+
+/* Navigation pricing button */
+.header__nav button {
+    background: none;
+    border: none;
+    font-weight: 600;
+    padding: 8px 0;
+    color: #1e3c72;
+    transition: color .2s;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.header__nav button:hover {
+    color: var(--brand);
+}
+
+.mobile-nav button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.05rem;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 0;
+    text-align: left;
+}
+
+.mobile-nav button:hover {
+    color: var(--brand);
+}
+
+/* Забезпечуємо відображення бургера на мобільних */
+@media (max-width:900px){
+    .header__nav{ display:none }   /* ховаємо десктоп-меню */
+    .header__cta .hamburger{
+        color: #1e3c72;
+        display:inline-block !important;
+    }
+}
+
+/* Стилі для відкритого стану бургер-меню */
+.hamburger.is-open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.is-open span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.is-open span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
 }
